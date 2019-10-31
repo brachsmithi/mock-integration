@@ -1,0 +1,4 @@
+{
+    "mockDataArrayBaseUrl": "http://localhost:4201",
+    "mockDataObjectBaseUrl": "http://localhost:4202"
+}
