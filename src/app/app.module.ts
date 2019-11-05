@@ -1,13 +1,13 @@
-import { APP_INITIALIZER } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { MockDataArrayComponent } from "./mock-data-array/mock-data-array.component";
-import { MockDataObjectComponent } from "./mock-data-object/mock-data-object.component";
-import { ConfigService } from "./services/config.service";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MockDataArrayComponent } from './mock-data-array/mock-data-array.component';
+import { MockDataObjectComponent } from './mock-data-object/mock-data-object.component';
+import { ConfigService } from './services/config.service';
 import { of, Observable, ObservableInput } from '../../node_modules/rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ function load(http: HttpClient, config: ConfigService): () => Promise<boolean> {
   return (): Promise<boolean> => {
     return new Promise<boolean>((resolve: (a: boolean) => void): void => {
       http
-        .get("./config.json")
+        .get('./config.json')
         .pipe(
           map((x: ConfigService) => {
             config.mockDataArrayBaseUrl = x.mockDataArrayBaseUrl;
@@ -31,8 +31,8 @@ function load(http: HttpClient, config: ConfigService): () => Promise<boolean> {
               if (x.status !== 404) {
                 resolve(false);
               }
-              config.mockDataArrayBaseUrl = "http://localhost:4201";
-              config.mockDataObjectBaseUrl = "http://localhost:4202";
+              config.mockDataArrayBaseUrl = 'http://localhost:4201';
+              config.mockDataObjectBaseUrl = 'http://localhost:4202';
               resolve(true);
               return of({});
             }

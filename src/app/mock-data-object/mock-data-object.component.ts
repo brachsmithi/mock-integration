@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MockData } from '../models/mock-data';
+import { MockDataObjectService } from '../services/mock-data-object.service';
 
 @Component({
   selector: 'app-mock-data-object',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MockDataObjectComponent implements OnInit {
 
-  constructor() { }
+  data: MockData;
+
+  constructor(private service: MockDataObjectService) { }
 
   ngOnInit() {
+    this.service.getMockData().subscribe(dataObject => {
+      this.data = dataObject;
+    });
   }
 
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MockDataArrayService } from '../services/mock-data-array.service';
+import { MockData } from '../models/mock-data';
 
 @Component({
   selector: 'app-mock-data-array',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MockDataArrayComponent implements OnInit {
 
-  constructor() { }
+  dataArray: MockData[];
+
+  constructor(private service: MockDataArrayService) { }
 
   ngOnInit() {
+    this.service.getMockDataArray().subscribe(dataArray => {
+      this.dataArray = dataArray;
+    });
   }
 
 }
