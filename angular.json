@@ -21,7 +21,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "src/tsconfig.app.json",
             "aot": false,
             "assets": [
               "src/favicon.ico",
@@ -61,6 +61,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "integration": {
+              "fileReplacements": [
+                {
+                  "replace": "src/assets/config.json",
+                  "with": "config/int.config.json"
+                }
+              ]
             }
           }
         },
@@ -72,6 +80,10 @@
           "configurations": {
             "production": {
               "browserTarget": "mock-integration:build:production"
+            },
+            "integration": {
+              "browserTarget": "micourt-portal:build:integration",
+              "proxyConfig": "e2e/mock/proxy/proxy.config.json"
             }
           }
         },
@@ -86,11 +98,14 @@
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "./karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/!(config.*.json)",
+                "input": "src/assets/",
+                "output": "/assets"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -102,24 +117,25 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "**/src/app/api/**/*"
             ]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "./protractor.conf.js",
             "devServerTarget": "mock-integration:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "mock-integration:serve:production"
+            "integration": {
+              "protractorConfig": "./protractor.mock.conf.js",
+              "devServerTarget": "mock-integration:serve:integration"
             }
           }
         }
