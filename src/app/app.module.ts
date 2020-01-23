@@ -8,50 +8,22 @@ import { AppComponent } from './app.component';
 import { MockDataArrayComponent } from './mock-data-array/mock-data-array.component';
 import { MockDataObjectComponent } from './mock-data-object/mock-data-object.component';
 import { ConfigService } from './services/config.service';
-import { of, Observable, ObservableInput } from '../../node_modules/rxjs';
-import { map, catchError } from 'rxjs/operators';
 
-// move this
-function load(http: HttpClient, config: ConfigService): () => Promise<boolean> {
-  return (): Promise<boolean> => {
-    return new Promise<boolean>((resolve: (a: boolean) => void): void => {
-      http
-        .get('./config.json')
-        .pipe(
-          map((x: ConfigService) => {
-            config.mockDataArrayBaseUrl = x.mockDataArrayBaseUrl;
-            config.mockDataObjectBaseUrl = x.mockDataObjectBaseUrl;
-            resolve(true);
-          }),
-          catchError(
-            (
-              x: { status: number },
-              caught: Observable<void>
-            ): ObservableInput<{}> => {
-              if (x.status !== 404) {
-                resolve(false);
-              }
-              config.mockDataArrayBaseUrl = 'http://localhost:4201';
-              config.mockDataObjectBaseUrl = 'http://localhost:4202';
-              resolve(true);
-              return of({});
-            }
-          )
-        )
-        .subscribe();
-    });
-  };
-}
+export function loadConfig(config: ConfigService) {
+  return () => config.loadConfig();
+};
 
 @NgModule({
   declarations: [AppComponent, MockDataArrayComponent, MockDataObjectComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
+    HttpClient,
+    ConfigService,
     {
       provide: APP_INITIALIZER,
-      useFactory: load,
+      useFactory: loadConfig,
       multi: true,
-      deps: [HttpClient, ConfigService]
+      deps: [ConfigService]
     }
   ],
   bootstrap: [AppComponent]

@@ -14,6 +14,6 @@ export class MockDataObjectService {
   constructor(private configs: ConfigService, private http: HttpClient) { }
 
   getMockData(): Observable<MockData> {
-    return this.http.get<MockData>(`${this.configs.mockDataObjectBaseUrl}/data`);
+    return this.http.get<MockData>(`${this.configs.config.mockDataObjectBaseUrl}/data`);
   }
 }

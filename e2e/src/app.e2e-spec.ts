@@ -1,5 +1,4 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,16 +7,10 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should load components', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('mock-integration app is running!');
+    expect(page.dataArrayComponent).not.toBeNull();
+    expect(page.dataObjectComponent).not.toBeNull();
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
-  });
 });

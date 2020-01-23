@@ -82,7 +82,7 @@
               "browserTarget": "mock-integration:build:production"
             },
             "integration": {
-              "browserTarget": "micourt-portal:build:integration",
+              "browserTarget": "mock-integration:build:integration",
               "proxyConfig": "e2e/mock/proxy/proxy.config.json"
             }
           }

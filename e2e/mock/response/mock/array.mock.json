@@ -1,0 +1,24 @@
+{
+    "name": "array",
+    "isArray": true,
+    "request": {
+      "url": "/array/",
+      "method": "GET"
+    },
+    "responses": {
+      "one": {
+        "default": true,
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Origin": "http://localhost:4200"
+        },
+        "data": [
+          {
+            "key": "Veggie",
+            "value": "rutabaga"
+          }
+        ]
+      }
+    }
+  }
+  

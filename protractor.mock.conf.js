@@ -12,7 +12,7 @@ var specReporter = new SpecReporter({
     }
 });
 
-var junitReporter = new jasmineReporters.JunitXmlReporter({
+var junitReporter = new jasmineReporters.JUnitXmlReporter({
     savePath: 'test-results',
     filePrefix: 'e2e-test-results',
     consolidateAll: true
@@ -22,7 +22,7 @@ let mockApiServer;
 
 exports.config = {
     specs: [
-        '.e2e/**/*.int-spec.ts'
+        './e2e/**/*.int-spec.ts'
     ],
     capabilities: {
         'browserName': 'chrome'
@@ -41,9 +41,6 @@ exports.config = {
           {cwd: __dirname, stdio: 'inherit'});
         process.on('exit', () => mockApiServer.kill());
 
-        return new Promise(function(resolve) {
-            screenshotReporter.beforeLaunch(resolve);
-        });
     },
     onPrepare() {
         require('ts-node').register({
