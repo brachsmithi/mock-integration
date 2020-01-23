@@ -1,6 +1,7 @@
 const devInterface = require('@ng-apimock/dev-interface');
 const apimock = require('@ng-apimock/core');
 const serveStatic = require('serve-static');
+const connect = require('connect');
 
 apimock.processor.process({
     src: 'e2e/mock/response',

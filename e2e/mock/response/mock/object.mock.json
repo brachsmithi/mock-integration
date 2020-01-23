@@ -1,0 +1,23 @@
+{
+    "name": "object",
+    "isArray": true,
+    "request": {
+      "url": "/object/",
+      "method": "GET"
+    },
+    "responses": {
+      "furniture": {
+        "default": true,
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Origin": "http://localhost:4200"
+        },
+        "data": 
+          {
+            "key": "Furniture",
+            "value": "desk"
+          }
+      }
+    }
+  }
+  

@@ -12,15 +12,11 @@ let service: MockDataObjectService;
 const baseUrl = 'http://fake.com';
 
 describe('MockDataObjectService', () => {
-  configs = {
-    mockDataArrayBaseUrl: null,
-    mockDataObjectBaseUrl: baseUrl
-  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{ provide: ConfigService, useValue: configs }]
+      providers: [ ConfigService ]
     });
     httpMock = TestBed.get<HttpTestingController>(HttpTestingController as Type<HttpTestingController>);
     service = TestBed.get(MockDataObjectService);
