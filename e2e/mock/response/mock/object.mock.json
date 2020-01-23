@@ -12,11 +12,32 @@
         "headers": {
           "Access-Control-Allow-Origin": "http://localhost:4200"
         },
-        "data": 
-          {
-            "key": "Furniture",
-            "value": "desk"
-          }
+        "data": {
+          "key": "Furniture",
+          "value": "desk"
+        }
+      },
+      "game": {
+        "default": true,
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Origin": "http://localhost:4200"
+        },
+        "data": {
+          "key": "Game",
+          "value": "Fluxx"
+        }
+      },
+      "street": {
+        "default": true,
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Origin": "http://localhost:4200"
+        },
+        "data": {
+          "key": "Street",
+          "value": "5th"
+        }
       }
     }
   }
