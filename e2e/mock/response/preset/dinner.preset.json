@@ -1,0 +1,16 @@
+{
+    "name": "dinner",
+    "mocks": {
+      "array": {
+        "scenario": "two",
+        "echo": true,
+        "delay": 0
+      },
+      "object": {
+        "scenario": "maindish",
+        "echo": true,
+        "delay": 0
+      }
+    },
+    "variables": {}
+  }

@@ -1,14 +1,14 @@
 {
   "/ngapimock/*": {
-      "target": "http://localhost:9900/",
-      "secure": false
-    },
-    "/array/*": {
-      "target": "http://localhost:9900/",
-      "secure": false
-    },
-    "/object/*": {
-      "target": "http://localhost:9900/",
-      "secure": false
-    }
+    "target": "http://localhost:9900/",
+    "secure": false
+  },
+  "/array/*": {
+    "target": "http://localhost:9900/",
+    "secure": false
+  },
+  "/object/*": {
+    "target": "http://localhost:9900/",
+    "secure": false
+  }
 }

@@ -18,7 +18,7 @@
         }
       },
       "game": {
-        "default": true,
+        "default": false,
         "status": 200,
         "headers": {
           "Access-Control-Allow-Origin": "http://localhost:4200"
@@ -29,7 +29,7 @@
         }
       },
       "street": {
-        "default": true,
+        "default": false,
         "status": 200,
         "headers": {
           "Access-Control-Allow-Origin": "http://localhost:4200"
@@ -37,6 +37,17 @@
         "data": {
           "key": "Street",
           "value": "5th"
+        }
+      },
+      "maindish": {
+        "default": false,
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Origin": "http://localhost:4200"
+        },
+        "data": {
+          "key": "Dish",
+          "value": "Salmon"
         }
       }
     }

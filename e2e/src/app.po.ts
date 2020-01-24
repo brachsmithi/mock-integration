@@ -4,6 +4,7 @@ const until = protractor.ExpectedConditions;
 
 export class AppPage {
 
+  appRoot: ElementFinder = element(by.tagName('app-root'));
   dataArrayComponent: ElementFinder = element(
     by.tagName('app-mock-data-array')
   );
@@ -11,9 +12,16 @@ export class AppPage {
     by.tagName('app-mock-data-object')
   );
   
+  
   navigateTo() {
-    browser.get(browser.baseUrl);
     browser.waitForAngularEnabled(false);
+    browser.get(browser.baseUrl);
+    // browser.sleep(1200);
+    browser.wait(
+      until.presenceOf(this.appRoot),
+      60000,
+      'Page should appear'
+    );
     browser.sleep(1200);
   }
 }
