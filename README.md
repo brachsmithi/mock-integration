@@ -31,7 +31,7 @@ npm run e2e_mock
 ```
 
 ## Creating integration tests
-The integration tests are included under the `e2e` directory, as they use protractor and share common functionality with the e2e tests. The app is configured such that `*.e2e-spec.ts` files will run in the e2e suite, while files matching `*.int-spec.ts` are integration.
+The integration tests are included under the `e2e` directory, as they use protractor and share common functionality with the e2e tests. The app is configured such that `*.spec.ts` files will run in the e2e suite, while files matching `*.int-spec.ts` are integration.
 
 The mock responses live under `e2e/mock/response/mock`, and the presets are nextdoor at `e2e/mock/response/preset`.
 
