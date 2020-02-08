@@ -4,6 +4,7 @@ import { MockDataArrayComponent } from './mock-data-array.component';
 import { MockDataArrayService } from '../services/mock-data-array.service';
 import { MockData } from '../models/mock-data';
 import { By } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
 
 describe('MockDataArrayComponent', () => {
   let component: MockDataArrayComponent;
@@ -12,11 +13,13 @@ describe('MockDataArrayComponent', () => {
   let dataArray: MockData[];
 
   beforeEach(async(() => {
-    const spy = jasmine.createSpyObj('MockDataArrayService', ['getMockDataArray']);
+    const dataServiceSpy = jasmine.createSpyObj('MockDataArrayService', ['getMockDataArray']);
+    const toastrServiceSpy = jasmine.createSpyObj('ToastrService', ['error']);
     TestBed.configureTestingModule({
       declarations: [ MockDataArrayComponent ],
       providers: [
-        { provide: MockDataArrayService, useValue: spy }
+        { provide: MockDataArrayService, useValue: dataServiceSpy },
+        { provide: ToastrService, useValue: toastrServiceSpy }
       ]
     })
     .compileComponents();

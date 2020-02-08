@@ -6,7 +6,7 @@ import { MockData } from '../models/mock-data';
 import { cold, getTestScheduler } from 'jasmine-marbles';
 import { By } from '@angular/platform-browser';
 
-fdescribe('MockDataObjectComponent', () => {
+describe('MockDataObjectComponent', () => {
   let component: MockDataObjectComponent;
   let fixture: ComponentFixture<MockDataObjectComponent>;
   let service: jasmine.SpyObj<MockDataObjectService>;

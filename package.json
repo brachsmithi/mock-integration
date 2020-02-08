@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.12",
+    "@angular/animations": "^8.2.14",
     "@angular/common": "~8.2.12",
     "@angular/compiler": "~8.2.12",
     "@angular/core": "~8.2.12",
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.2.12",
     "@angular/platform-browser-dynamic": "~8.2.12",
     "@angular/router": "~8.2.12",
+    "ngx-toastr": "^11.3.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -47,6 +48,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "karma-junit-reporter": "^1.2.0",
+    "karma-typescript": "^4.1.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mock-integration';
+
+  constructor(private toastr: ToastrService) { }
+
+  showError(){
+    this.toastr.error("Hello, I'm the toastr message.")
+  }
 }

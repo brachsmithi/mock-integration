@@ -13,6 +13,6 @@ export class MockDataArrayService {
 
   getMockDataArray(): Observable<Array<MockData>> {
     return this.http
-      .get<Array<MockData>>(`${this.configs.config.mockDataArrayBaseUrl}/array`);
+      .get<Array<MockData>>(`${this.configs.config().mockDataArrayBaseUrl}/array`);
   }
 }

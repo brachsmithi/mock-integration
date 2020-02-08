@@ -4,10 +4,12 @@ import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { MockDataArrayComponent } from './mock-data-array/mock-data-array.component';
+import { ToastrService } from 'ngx-toastr';
 
 let fixture: ComponentFixture<AppComponent>;
 
 describe('AppComponent', () => {
+  const toastr = jasmine.createSpy('ToastrService');
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -18,6 +20,9 @@ describe('AppComponent', () => {
         MockedArrayComponent,
         MockedObjectComponent
       ],
+      providers: [
+        { provide: ToastrService, useValue: toastr}
+      ]
     }).compileComponents();
   }));
 

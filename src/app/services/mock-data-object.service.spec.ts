@@ -5,8 +5,9 @@ import { ConfigService } from './config.service';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { Type } from '@angular/core';
 import { MockData } from '../models/mock-data';
+import { cold } from 'jasmine-marbles';
+import { Configuration } from '../models/configuration';
 
-let configs: ConfigService;
 let httpMock: HttpTestingController;
 let service: MockDataObjectService;
 const baseUrl = 'http://fake.com';
@@ -14,12 +15,21 @@ const baseUrl = 'http://fake.com';
 describe('MockDataObjectService', () => {
 
   beforeEach(() => {
+    const configSpy = jasmine.createSpyObj('ConfigService', ['config']);
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ ConfigService ]
-    });
+      providers: [ 
+        { provide: ConfigService, useValue: configSpy }
+      ]
+    }).compileComponents();
     httpMock = TestBed.get<HttpTestingController>(HttpTestingController as Type<HttpTestingController>);
     service = TestBed.get(MockDataObjectService);
+    let mockConfigService = TestBed.get(ConfigService);
+    var config = <Configuration> {
+      mockDataArrayBaseUrl: "foo",
+      mockDataObjectBaseUrl: baseUrl
+    };
+    mockConfigService.config.and.returnValue(config);
   });
 
   afterEach(() => {

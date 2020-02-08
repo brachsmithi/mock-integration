@@ -4,24 +4,31 @@ import { MockDataArrayService } from './mock-data-array.service';
 import { ConfigService } from './config.service';
 import { Type } from '@angular/core';
 import { MockData } from '../models/mock-data';
+import { Configuration } from '../models/configuration';
 
-let configs: ConfigService;
 let httpMock: HttpTestingController;
 let service: MockDataArrayService;
 const baseUrl = 'http://fake.org';
 
 describe('MockDataArrayService', () => {
+  const configSpy = jasmine.createSpyObj('ConfigService', ['config']);
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
       ],
       providers: [
-        ConfigService
+        { provide: ConfigService, useValue: configSpy }
       ]
     });
     httpMock = TestBed.get<HttpTestingController>(HttpTestingController as Type<HttpTestingController>);
     service = TestBed.get(MockDataArrayService);
+    let mockConfigService = TestBed.get(ConfigService);
+    var config = <Configuration> {
+      mockDataArrayBaseUrl: baseUrl,
+      mockDataObjectBaseUrl: "string"
+    };
+    mockConfigService.config.and.returnValue(config);
   });
 
   afterEach(() => {

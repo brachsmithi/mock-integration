@@ -10,7 +10,7 @@ export class ConfigService {
 
   constructor(private http: HttpClient) { }
 
-  get config() {
+  public config(): Configuration {
     return this._config;
   }
 
